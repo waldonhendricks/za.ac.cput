@@ -22,7 +22,7 @@ import static org.junit.Assert.assertNotNull;
  * connection will still be successful, but the connection and disconnection
  * times will considerably increase.
  *
- * @author pfernandom - Pedro Marquez
+ * @author Waldon Hendricks
  *
  */
 public class CassandraClientTest {
@@ -36,7 +36,7 @@ public class CassandraClientTest {
     @Before
     public void setUp() {
         client = new SimpleClient();
-        client.connect("person", "10.47.3.102");
+        client.connect("10.47.3.102");
         start = System.currentTimeMillis();
     }
 
@@ -54,7 +54,7 @@ public class CassandraClientTest {
     @Test
     public void testConnection() {
         client = new SimpleClient();
-        Metadata metadata = client.connect("person", "10.47.3.102");
+        Metadata metadata = client.connect("10.47.3.102");
         System.out.printf("Connected to cluster: %s\n", metadata.getClusterName());
         for (Host host : metadata.getAllHosts()) {
             System.out.printf("Datacenter: %s; Host: %s; Rack: %s\n", host.getDatacenter(),

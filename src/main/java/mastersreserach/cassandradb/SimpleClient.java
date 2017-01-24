@@ -8,8 +8,7 @@ package mastersreserach.cassandradb;
 /**
  * A simple Cassandra client using Datastax driver.
  *
- * @author pfernandom - Pedro Marquez
- *
+ * @author pfernandom - Waldon Hendricks
  */
 public class SimpleClient {
     private Cluster cluster;
@@ -18,17 +17,28 @@ public class SimpleClient {
     /**
      * Connect to a Cassandra cluster
      *
-     * @param keyspace
-     *            Name of the keyspace to connect to.
      * @param nodes
      *            Array of Strings with the addresses to the nodes to connect
      * @return The metadata of the cluster
      */
-    public Metadata connect(String keyspace, String... nodes) {
+    public Metadata connect(String... nodes) {
         cluster = Cluster.builder().addContactPoints("10.47.3.102").build();
         Metadata metadata = cluster.getMetadata();
-        session = cluster.connect(keyspace);
+        session = cluster.connect("person");
         return metadata;
+    }
+
+    /**
+     * Execute a query
+     *
+     * @return
+     */
+    public ResultSet executeQuery() {
+        return executeQuery();
+    }
+
+    public Cluster getCluster() {
+        return cluster;
     }
 
     /**
