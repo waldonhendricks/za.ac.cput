@@ -1,0 +1,5 @@
+<root>
+    <item name='com.datastax.driver.core.DelegatingCluster'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>

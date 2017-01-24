@@ -17,6 +17,8 @@ public class ArangoDBMainTest {
         arangoDB = new ArangoDB.Builder()
                 .host("10.47.3.51")
                 .port(1026)
+                .user("root")
+                .password("root")
                 .build();
 
 
