@@ -36,7 +36,7 @@ public class CassandraClientTest {
     @Before
     public void setUp() {
         client = new SimpleClient();
-        client.connect("10.47.3.102");
+        client.connect("10.47.2.151");
         start = System.currentTimeMillis();
     }
 
@@ -54,7 +54,7 @@ public class CassandraClientTest {
     @Test
     public void testConnection() {
         client = new SimpleClient();
-        Metadata metadata = client.connect("10.47.3.102");
+        Metadata metadata = client.connect("10.47.2.151");
         System.out.printf("Connected to cluster: %s\n", metadata.getClusterName());
         for (Host host : metadata.getAllHosts()) {
             System.out.printf("Datacenter: %s; Host: %s; Rack: %s\n", host.getDatacenter(),
@@ -63,8 +63,7 @@ public class CassandraClientTest {
         assertNotNull(metadata);
     }
 
-    @Test
-    public void testQuery() {
+    /*public void testQuery() {
         ResultSet rs = client.executeQuery("SELECT * FROM person LIMIT 10");
         System.out.println(rs.toString());
 
@@ -94,5 +93,5 @@ public class CassandraClientTest {
         ResultSet rs = client.getSession().execute(
                 boundStatement.bind("Diablo Swing Orchestra", "Sweden", "Metal-Swing"));
         assertNotNull(rs);
-    }
+    }*/
 }

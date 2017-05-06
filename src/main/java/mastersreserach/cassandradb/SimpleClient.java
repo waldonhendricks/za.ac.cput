@@ -22,7 +22,7 @@ public class SimpleClient {
      * @return The metadata of the cluster
      */
     public Metadata connect(String... nodes) {
-        cluster = Cluster.builder().addContactPoints("10.47.3.102").build();
+        cluster = Cluster.builder().addContactPoints("10.47.2.151").build();
         Metadata metadata = cluster.getMetadata();
         session = cluster.connect("person");
         return metadata;
