@@ -1,5 +1,4 @@
 package mastersreserach.arangodb;
-
 import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDBException;
 import com.arangodb.entity.BaseDocument;
@@ -27,7 +26,18 @@ public class ArangoDBMainTest {
     @Test
     public void addRecord() throws Exception {
         System.out.println(" Adding Record");
-        String dbName = "test1";
+        String dbName = "test3";
+        long startTime = System.currentTimeMillis();
+        try {
+            arangoDB.createDatabase(dbName);
+            System.out.println("Database created: " + dbName);
+        } catch (ArangoDBException e) {
+            System.err.println("Failed to create database: " + dbName + "; " + e.getMessage());
+        }
+        long endTime = System.currentTimeMillis();
+        long diff = endTime - startTime;
+        System.out.println("Total time (in mill seconds) : " + (diff));
+        System.out.println("Database created: " + dbName);
 
         String collectionName = "firstCollection";
         try {
@@ -36,12 +46,7 @@ public class ArangoDBMainTest {
         } catch (ArangoDBException e) {
             System.err.println("Failed to create collection: " + collectionName + "; " + e.getMessage());
         }
-        try {
-            arangoDB.createDatabase(dbName);
-            System.out.println("Database created: " + dbName);
-        } catch (ArangoDBException e) {
-            System.err.println("Failed to create database: " + dbName + "; " + e.getMessage());
-        }
+
 
         BaseDocument myObject = new BaseDocument();
         myObject.setKey("myKey");
@@ -56,3 +61,25 @@ public class ArangoDBMainTest {
 
     }
 }
+
+/**
+ * Created by hashcode on 2017/01/23.
+ */
+
+/**@Test
+
+
+public void addRecord() throws Exception {
+System.out.println("Adding Record");
+String dbName = "test";
+long startTime = System.currentTimeMillis();
+
+arangoDB.createDatabase(dbName);
+long endTime = System.currentTimeMillis();
+long diff = endTime - startTime;
+System.out.println("Total time (in mill seconds) : " + (diff));
+System.out.println("Database created: " + dbName);
+}
+
+}
+ */
